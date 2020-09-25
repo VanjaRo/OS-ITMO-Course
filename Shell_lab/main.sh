@@ -1,13 +1,13 @@
 #! /bin/bash
 
 all_com=( "calc" "search" "reverse" "strlen" "log" "exit" "help" "interactive" )
-avaivalable_com=()
+available_com=()
 unavailable_com=()
 
 for com in ${all_com[@]}; do
     if [[ (-f "$com"_.sh) && (-x "$com"_.sh) && (-s "$com"_.sh) ]]
     then 
-        avaivalable_com+=( $com )
+        available_com+=( $com )
     else
         unavailable_com+=( $com )
     fi 
@@ -15,10 +15,10 @@ done
 
 defined_com=0
 
-for com in ${avaivalable_com[@]}; do
+for com in ${available_com[@]}; do
     if [[ "$1" -eq "$com" ]]
     then
-        echo "`./$1_.sh $2 $3 $4`"
+        ./"$1"_.sh "$2" "$3" "$4"
         defined_com=1
         break
     fi
@@ -31,7 +31,7 @@ then
         then
             defined_com=1
             echo "This command is now unavailable, try one's from available list:"
-            echo "${avaivalable_com[*]}"
+            echo "${available_com[*]}"
         fi
     done
 fi
@@ -39,7 +39,7 @@ fi
 if [[ "$defined_com" -eq 0 ]]
 then 
     echo "This command undifined at all, try one's from available list:"
-    echo "${avaivalable_com[*]}"
+    echo "${available_com[*]}"
 fi
 
 if [[ "$?" -ne 0 ]]
