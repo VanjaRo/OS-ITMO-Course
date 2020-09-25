@@ -3,10 +3,13 @@
 if [[ $# -ne 2 ]]
 then 
     exit 131
-elif [[ (-f "$1") && (-r "$1") ]]
+fi
+
+if ! [[ -r "$1" ]]
 then 
     exit 132
 fi
+
 
 if [[ -f "$2" ]]
 then 
@@ -20,8 +23,6 @@ else
     if ! [[ -w "$dir" ]]; then exit 135; fi
 
 fi
-
-true > "$2"
 
 echo "Write to the end of a file or rewrite full file (w / rw)?"
 read inpt

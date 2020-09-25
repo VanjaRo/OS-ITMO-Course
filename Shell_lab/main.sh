@@ -14,11 +14,13 @@ for com in ${all_com[@]}; do
 done 
 
 defined_com=0
+ext_c=0
 
 for com in ${available_com[@]}; do
     if [[ "$1" -eq "$com" ]]
     then
-        ./"$1"_.sh "$2" "$3" "$4"
+        ./"$1"_.sh "$2" "$3" $4
+	ext_c=$?
         defined_com=1
         break
     fi
@@ -42,9 +44,9 @@ then
     echo "${available_com[*]}"
 fi
 
-if [[ "$?" -ne 0 ]]
+if [[ "$ext_c" -ne 0 ]]
 then 
-    case $? in 
+    case $ext_c in 
         111) echo "calc: wrong number of arguments"
         ;;
         112) echo "calc: wrong type of argument(s)"
@@ -75,7 +77,7 @@ then
         ;;
         151) echo "log: can't access X.log file"
         ;;
-        *) echo "Exited with code "$?""
+        *) echo "Exited with code "$ext_c""
         ;;
     esac
 fi

@@ -20,30 +20,37 @@ while true; do
             read -p "First operand: " x
             read -p "Second operand: " y
             ./calc_.sh "$funk" "$x" "$y"
+	    break
             ;;
             search)
             read -p "Dirictory to search in: " dir
             read -p "String to find: " str
             ./search_.sh "$dir" "$str"
+	    break
             ;;
             reverse)
             read -p "File to reverse: " f
             read -p "Output file name: " of
             ./reverse_.sh "$f" "$of"
+	    break
             ;;
             strlen)
             read -p "String to count" str
             ./strlen_.sh "$str"
+	    break
             ;;
             log) 
             ./log_.sh
+	    break
             ;;
             help)
             ./help_.sh
+	    break
             ;;
             exit)
             read -p "Code to exit: " extc
             ./exit.sh "$extc"
+	    break
 	    ;;
         esac
     done
