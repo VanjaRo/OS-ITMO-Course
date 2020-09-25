@@ -9,7 +9,7 @@ for com in ${all_com[@]}; do
     then 
         avaivalable_com+=($com)
     else
-        unavailable_com=($com)
+        unavailable_com+=($com)
     fi 
 done 
 
@@ -22,7 +22,9 @@ for com in ${avaivalable_com[@]}; do
         defined_com=1
         break
     fi
-if [[ $defined_com -eq 0]]
+done
+
+if [[ "$defined_com" -eq 0 ]]
 then
     for com in ${unavailable_com[@]}; do
         if [[ "$1" -eq "$com" ]]
@@ -31,43 +33,45 @@ then
             echo "This command is now unavailable, try one's from available list:"
             echo "${available_com[*]}"
         fi
+    done
 fi
 
-if [[ $defined_com -eq 0 ]]
+if [[ "$defined_com" -eq 0 ]]
 then 
     echo "This command undifined at all, try one's from available list:"
     echo "${available_com[*]}"
 fi
 
-if [[ $? -ne 0 ]]
+if [[ "$?" -ne 0 ]]
 then 
     case $? in 
-        111) echo ""
+        111) echo "calc: wrong number of arguments"
         ;;
-        112) echo ""
+        112) echo "calc: wrong type of argument(s)"
         ;;
-        113) echo ""
+        113) echo "calc: zero devision error"
         ;;
-        114) echo ""
+        114) echo "calc: wrong type of operation"
         ;;
-        121) echo ""
+        121) echo "search: wrong number of arguments"
         ;;
-        122) echo ""
+        122) echo "search: can't read the file(s)"
         ;;
-        123) echo ""
+        123) echo "search: can't access given directory"
         ;;
-        124) echo ""
+        131) echo "reverse: wrong number of arguments"
         ;;
-        131) echo ""
+        132) echo "reverse: can't access given input file"
         ;;
-        132) echo ""
+        133) echo "reverse: can't access given output file"
         ;;
-        133) echo ""
+        134) echo "reverse: wrong type of writing to the output"
         ;;
-        134) echo ""
+        141) echo "strlen: wrong number of arguments "
         ;;
-        141) echo ""
+        151) echo "log: can't access X.log file"
         ;;
-        151) echo ""
+        *) echo "Exited with code "$?""
         ;;
-        *) echo "Exit with code "$?""
+    esac
+fi

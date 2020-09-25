@@ -42,4 +42,33 @@ Entering an interactive mode with a menu
 help
 --
 Outputting this lines of text to your command prompt
+
+****
+Exit codes: 
+
+111 - calc: wrong number of arguments
+
+112 - calc: wrong type of argument(s)
+
+113 - calc: zero devision error
+
+114 - calc: wrong type of operation
+
+121 - search: wrong number of arguments
+
+122 - search: can't read the file(s)
+
+123 - search: can't access given directory
+
+131 - reverse: wrong number of arguments
+
+132 - reverse: can't access given input file
+
+133 - reverse: can't access given output file
+
+134 - reverse: wrong type of writing to the output
+
+141 - strlen: wrong number of arguments 
+
+151 - log: can't access X.log file
 "
