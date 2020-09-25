@@ -65,7 +65,11 @@ then
         ;;
         133) echo "reverse: can't access given output file"
         ;;
-        134) echo "reverse: wrong type of writing to the output"
+        134) echo "reverse: can't access given output file directory"
+        ;;
+        135) echo "reverse: can't write to the output file"
+        ;;
+        136) echo "reverse: wrong type of writing to the output"
         ;;
         141) echo "strlen: wrong number of arguments "
         ;;

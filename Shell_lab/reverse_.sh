@@ -3,14 +3,22 @@
 if [[ $# -ne 2 ]]
 then 
     exit 131
-fi
 elif [[ (-f "$1") && (-r "$1") ]]
 then 
     exit 132
 fi
-elif [[ (-f "$2") && (-w "$2") ]]
+
+if [[ -f "$2" ]]
 then 
-    exit 133
+    if ! [[ -w "$2" ]]
+    then 
+        exit 133
+    fi
+else 
+    dir=$(dirname "$2")
+    if ! [[ -d "$dir" ]]; then exit 134; fi
+    if ! [[ -w "$dir" ]]; then exit 135; fi
+
 fi
 
 true > "$2"
@@ -22,5 +30,5 @@ case "$inpt" in
     ;;
     rw) tac $1 > $2
     ;;
-    *) exit 134
+    *) exit 136
 esac
