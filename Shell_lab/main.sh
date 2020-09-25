@@ -1,5 +1,10 @@
 #! /bin/bash
 
+# if [[ $# -eq 0 ]]
+# then 
+#     exit 100
+# fi
+
 all_com=( "calc" "search" "reverse" "strlen" "log" "exit" "help" "interactive" )
 available_com=()
 unavailable_com=()
@@ -17,10 +22,10 @@ defined_com=0
 ext_c=0
 
 for com in ${available_com[@]}; do
-    if [[ "$1" -eq "$com" ]]
+    if [[ ("$1" -eq "$com") && (-n "$1") ]]
     then
         ./"$1"_.sh "$2" "$3" $4
-	ext_c=$?
+	    ext_c=$?
         defined_com=1
         break
     fi
@@ -77,7 +82,7 @@ then
         ;;
         151) echo "log: can't access X.log file"
         ;;
-        *) echo "Exited with code "$ext_c""
+        *) echo "Exited with code: "$ext_c""
         ;;
     esac
 fi

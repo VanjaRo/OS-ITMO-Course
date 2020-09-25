@@ -46,6 +46,8 @@ Outputting this lines of text to your command prompt
 ****
 Exit codes: 
 
+100 - main: no arguments were passed to main
+
 111 - calc: wrong number of arguments
 
 112 - calc: wrong type of argument(s)
