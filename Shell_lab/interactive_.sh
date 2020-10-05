@@ -44,7 +44,7 @@ interactive_(){
                     break
                 ;;
                 strlen)
-                    read -p "String to count" str
+                    read -p "String to count: " str
                     strlen_ $str
                     break
                 ;;
