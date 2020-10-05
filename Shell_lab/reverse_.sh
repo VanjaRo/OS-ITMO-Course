@@ -1,35 +1,33 @@
 #! /bin/bash
 
-if [[ $# -ne 2 ]]
-then 
-    exit 131
-fi
-
-if ! [[ -r "$1" ]]
-then 
-    exit 132
-fi
-
-
-if [[ -f "$2" ]]
-then 
-    if ! [[ -w "$2" ]]
+reverse_(){
+    if [[ $# -ne 2 ]]
     then 
-        exit 133
+        echo "reverse: wrong number of arguments" >&2; return 131
     fi
-else 
-    dir=$(dirname "$2")
-    if ! [[ -d "$dir" ]]; then exit 134; fi
-    if ! [[ -w "$dir" ]]; then exit 135; fi
 
-fi
+    if ! [[ -r "$1" ]]
+    then 
+        echo "reverse: can't access given input file" >&2; return 132
+    fi
 
-echo "Write to the end of a file or rewrite full file (w / rw)?"
-read inpt
-case "$inpt" in
-    w) tac $1 >> $2
-    ;;
-    rw) tac $1 > $2
-    ;;
-    *) exit 136
-esac
+
+    if [[ -f "$2" ]]
+    then 
+        if ! [[ -w "$2" ]]
+        then 
+            echo "reverse: can't write the given file" >&2; return 133
+        fi
+    else 
+        dir=$(dirname "$2")
+        if ! [[ -d "$dir" ]]; then
+            echo "reverse: can't access to the given output file directory" >&2; return 134;
+        fi
+        if ! [[ -w "$dir" ]]; then 
+            echo "reverse: can't write to the given output file directory" >&2; return 135; 
+        fi
+
+    fi
+
+    tac $1 >> $2
+}
