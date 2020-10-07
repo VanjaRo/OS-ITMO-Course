@@ -2,7 +2,7 @@
 
 log_(){
 
-out=/usr/log/anaconda/X.log
+out=/var/log/anaconda/X.log
 
 if [[ (-f $out) && (-r $out) ]]
 then
