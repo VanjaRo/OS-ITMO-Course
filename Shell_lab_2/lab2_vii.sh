@@ -28,4 +28,4 @@ cat tmp1.log |
 			echo $pid":"$patch":"$delta
 		fi
 	done | sort -t ":" -nk 3 | tail -n 3
-rm temp*
+rm tmp*
