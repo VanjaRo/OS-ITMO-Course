@@ -28,24 +28,24 @@ interactive_(){
                     read -p "Operation name (sum/sub/mul/div): " funk
                     read -p "First operand: " x
                     read -p "Second operand: " y
-                    calc_ $funk $x $y
+                    calc_ "$funk" "$x" "$y"
                     break
                 ;;
                 search)
                     read -p "Dirictory to search in: " dir
                     read -p "String to find: " str
-                    search_ $dir $str
+                    search_ "$dir" "$str"
                     break
                 ;;
                 reverse)
                     read -p "File to reverse: " f
                     read -p "Output file name: " of
-                    reverse_ $f $of
+                    reverse_ "$f" "$of"
                     break
                 ;;
                 strlen)
                     read -p "String to count: " str
-                    strlen_ $str
+                    strlen_ "$str"
                     break
                 ;;
                 log) 
