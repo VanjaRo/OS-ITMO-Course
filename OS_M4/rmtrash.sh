@@ -14,6 +14,12 @@ then
     exit 2
 fi
 
+if [ ! "`echo $file | sed 's/[a-z,0-9,_,-]*//'`" == "" ];
+then
+    echo "Bad user input."
+    exit 3
+fi
+
 if [[ ! -d ~/.trash ]]
 then
 	mkdir ~/.trash
@@ -22,20 +28,16 @@ fi
 if [[ ! -e "$file" ]]
 then
 	echo $file "does not exists."
-	exit 3
+	exit 4
 fi
 
 if [[ -d "$file" ]]
 then
 	echo $file "is a directory."
-	exit 4
+	exit 5
 fi
 
-# if [ ! "`echo $file | sed 's/[a-z,0-9,_,-]*//'`" == "" ];
-# then
-#     echo "Bad user input."
-#     exit 5
-# fi
+
 
 id=$(find "~/.trash/" -type f -name "[1-9]" | sed -e 's,.trash/,,')
 id=$(echo $id | awk '{print $NF}')
