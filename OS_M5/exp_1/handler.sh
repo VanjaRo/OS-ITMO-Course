@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./mem.bash&pid0=$!
+./mem.sh&pid0=$!
 rm data1
 echo "TIME MEM VIRT RES SHR CPU FREE SWAP" >> data1
 
