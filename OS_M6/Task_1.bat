@@ -7,8 +7,7 @@ wmic logicaldisk list brief > "C:\LAB6\disks.txt"
 
 ::1.2
 mkdir "C:\LAB6\TEST"
-xcopy "C:\LAB6\*" 
-"C:\LAB6\TEST\"
+xcopy "C:\LAB6\*" "C:\LAB6\TEST\"
 
 ::1.3
 copy "C:\LAB6\TEST\*" "C:\LAB6\TEST\all.txt"
