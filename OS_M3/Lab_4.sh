@@ -1,8 +1,11 @@
 #!/bin/bash
 
-sh Lab_4_SubScript.sh & pid0=$!
-sh Lab_4_SubScript.sh & pid1=$!
-sh Lab_4_SubScript.sh & pid2=$!
+sh Lab_4_SubScript.sh &
+pid0=$!
+sh Lab_4_SubScript.sh & 
+pid1=$!
+sh Lab_4_SubScript.sh & 
+pid2=$!
 
 renice 10 -p $pid0
 
